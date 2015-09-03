@@ -43,7 +43,8 @@ apply Service "<%= @object_servicename %>" to Host {
   <%- end -%>
   }
   <%- else -%>
-  vars.<%= key %> = "<%= value %>"
+  vars.<%= key %> = <%= value %>
+  <%- end -%>
   <%- end -%>
   <%- end -%>
   <%- end -%>
