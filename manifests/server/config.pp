@@ -118,11 +118,14 @@ class icinga2::server::config inherits icinga2::server {
 
   #Directory resource for /etc/icinga2/objects/hosts/:
   file { '/etc/icinga2/objects/hosts/':
-    ensure => directory,
-    path   => '/etc/icinga2/objects/hosts/',
-    owner  => $etc_icinga2_obejcts_sub_dir_owner,
-    group  => $etc_icinga2_obejcts_sub_dir_group,
-    mode   => $etc_icinga2_obejcts_sub_dir_mode,
+    ensure  => directory,
+    path    => '/etc/icinga2/objects/hosts/',
+    owner   => $etc_icinga2_obejcts_sub_dir_owner,
+    group   => $etc_icinga2_obejcts_sub_dir_group,
+    mode    => $etc_icinga2_obejcts_sub_dir_mode,
+    purge   => true,
+    recurse => true,
+    force   => true,
   }
 
   #Directory resource for /etc/icinga2/objects/hostgroups/:
@@ -136,11 +139,14 @@ class icinga2::server::config inherits icinga2::server {
 
   #Directory resource for /etc/icinga2/objects/services/:
   file { '/etc/icinga2/objects/services/':
-    ensure => directory,
-    path   => '/etc/icinga2/objects/services/',
-    owner  => $etc_icinga2_obejcts_sub_dir_owner,
-    group  => $etc_icinga2_obejcts_sub_dir_group,
-    mode   => $etc_icinga2_obejcts_sub_dir_mode,
+    ensure  => directory,
+    path    => '/etc/icinga2/objects/services/',
+    owner   => $etc_icinga2_obejcts_sub_dir_owner,
+    group   => $etc_icinga2_obejcts_sub_dir_group,
+    mode    => $etc_icinga2_obejcts_sub_dir_mode,
+    purge   => true,
+    recurse => true,
+    force   => true,
   }
 
   #Directory resource for /etc/icinga2/objects/servicegroups/:
