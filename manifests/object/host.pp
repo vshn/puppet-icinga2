@@ -60,7 +60,7 @@ define icinga2::object::host (
   validate_string($target_file_mode)
   validate_bool($refresh_icinga2_service)
 
-  file { "/etc/icinga2/objects/hosts/${::fqdn}.conf":
+  file { "/etc/icinga2/objects/services/${::fqdn}":
     ensure  => directory,
     owner   => 'root',
     group   => 'root',
