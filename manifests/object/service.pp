@@ -62,7 +62,7 @@ define icinga2::object::service (
   #If the refresh_icinga2_service parameter is set to true...
   if $refresh_icinga2_service == true {
 
-    file { "/etc/icinga2/objects/services/${host}/${name}.conf":
+    file { "/etc/icinga2/objects/services/${host_name}/${name}.conf":
       ensure  => $target_file_ensure,
       owner   => $target_file_owner,
       group   => $target_file_group,
@@ -76,7 +76,7 @@ define icinga2::object::service (
   #...otherwise, use the same file resource but without a notify => parameter: 
   else {
   
-    file { "/etc/icinga2/objects/services/${host}/${name}.conf":
+    file { "/etc/icinga2/objects/services/${host_name}/${name}.conf":
       ensure  => $target_file_ensure,
       owner   => $target_file_owner,
       group   => $target_file_group,
