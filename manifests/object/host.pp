@@ -65,6 +65,9 @@ define icinga2::object::host (
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
+    recurse => true,
+    purge   => true,
+    force   => true,
   }
 
   #If the refresh_icinga2_service parameter is set to true...
