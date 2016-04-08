@@ -68,6 +68,7 @@ define icinga2::object::host (
     recurse => true,
     purge   => true,
     force   => true,
+    notify  => Service['icinga2'],
   }
 
   #If the refresh_icinga2_service parameter is set to true...
