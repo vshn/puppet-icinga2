@@ -126,6 +126,7 @@ class icinga2::server::config inherits icinga2::server {
     purge   => true,
     recurse => true,
     force   => true,
+    notify  => Service['icinga2'],
   }
 
   #Directory resource for /etc/icinga2/objects/hostgroups/:
@@ -147,6 +148,7 @@ class icinga2::server::config inherits icinga2::server {
     purge   => true,
     recurse => true,
     force   => true,
+    notify  => Service['icinga2'],
   }
 
   #Directory resource for /etc/icinga2/objects/servicegroups/:
