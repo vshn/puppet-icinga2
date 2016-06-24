@@ -13,6 +13,7 @@
 define icinga2::nrpe::command (
   $command_name       = $name,
   $use_sudo           = false,
+  $sudo_user          = 'root',
   $sudoers_dir        = $icinga2::params::sudoers_dir_path,
   $nrpe_plugin_libdir = $icinga2::params::nrpe_plugin_libdir,
   $nrpe_plugin_name   = undef,
@@ -22,6 +23,7 @@ define icinga2::nrpe::command (
   #Do some validation of the class' parameters:
   validate_string($command_name)
   validate_bool($use_sudo)
+  validate_string($sudo_user)
   validate_string($sudoers_dir)
   validate_string($nrpe_plugin_libdir)
   validate_string($nrpe_plugin_name)
