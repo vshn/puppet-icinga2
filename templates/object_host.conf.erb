@@ -37,7 +37,7 @@ object Host "<%= @object_hostname %>" {
   <%- end -%>
   }
   <%- else -%>
-  <%- if value =~ /^(false|true)$/ -%>
+  <%- if !!value == value -%>
   vars.<%= key %> = <%= value %>
   <%- else -%>
   vars.<%= key %> = "<%= value %>"
