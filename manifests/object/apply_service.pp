@@ -79,13 +79,14 @@ define icinga2::object::apply_service (
     $_notify = undef
   }
 
-  file { "${target_dir}/${target_file_name}":
-    ensure  => $target_file_ensure,
-    owner   => $target_file_owner,
-    group   => $target_file_group,
-    mode    => $target_file_mode,
-    content => template('icinga2/object/apply_service.conf.erb'),
-    #...notify the Icinga 2 daemon so it can restart and pick up changes made to this config file...
-    notify  => $_notify,
+  ::icinga2::objectfile { "${title}":
+    ensure     => $target_file_ensure,
+    target_dir => $target_dir,
+    owner      => $target_file_owner,
+    group      => $target_file_group,
+    mode       => $target_file_mode,
+    order      => $target_file_name,
+    content    => template('icinga2/object/apply_service.conf.erb'),
+    notify     => $_notify,
   }
 }

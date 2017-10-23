@@ -67,29 +67,21 @@ define icinga2::object::service (
 
   #If the refresh_icinga2_service parameter is set to true...
   if $refresh_icinga2_service == true {
-
-    file { "${target_dir}/${target_file_name}":
-      ensure  => $target_file_ensure,
-      owner   => $target_file_owner,
-      group   => $target_file_group,
-      mode    => $target_file_mode,
-      content => template('icinga2/object/service.conf.erb'),
-      #...notify the Icinga 2 daemon so it can restart and pick up changes made to this config file...
-      notify  => Class['::icinga2::service'],
-    }
-
+    $_notify = Class['::icinga2::service']
   }
   #...otherwise, use the same file resource but without a notify => parameter:
   else {
-
-    file { "${target_dir}/${target_file_name}":
-      ensure  => $target_file_ensure,
-      owner   => $target_file_owner,
-      group   => $target_file_group,
-      mode    => $target_file_mode,
-      content => template('icinga2/object/service.conf.erb'),
-    }
-
+    $_notify = undef
   }
 
+  ::icinga2::objectfile { "${title}":
+    ensure     => $target_file_ensure,
+    target_dir => $target_dir,
+    owner      => $target_file_owner,
+    group      => $target_file_group,
+    mode       => $target_file_mode,
+    order      => $target_file_name,
+    content    => template('icinga2/object/service.conf.erb'),
+    notify     => $_notify,
+  }
 }
