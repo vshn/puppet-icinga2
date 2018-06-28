@@ -18,11 +18,13 @@ apply Notification "<%= @object_notificationname %>" to Service {
   host_name = "<%= @host_name %>"
   <%- end -%>
   <%- if @assign_where -%>
-  assign where <%= @assign_where %>
-  <%- end -%>
+  <%- Array(@assign_where).each do |line| -%>
+  assign where <%= line %>
+  <%- end end -%>
   <%- if @ignore_where -%>
-  ignore where <%= @ignore_where %>
-  <%- end -%>
+  <%- Array(@ignore_where).each do |line| -%>
+  ignore where <%= line %>
+  <%- end end -%>
   <%- if @command -%>
   command = "<%= @command %>"
   <%- end -%>
