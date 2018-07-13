@@ -21,9 +21,11 @@ object HostGroup "<%= @object_hostgroup_name %>" {
   groups = [ <%- @groups.each do |group| -%> "<%= group %>", <%- end -%>]
   <%- end -%>
   <%- if @assign_where -%>
-  assign where <%= @assign_where %>
-  <%- end -%>
+  <%- Array(@assign_where).each do |line| -%>
+  assign where <%= line %>
+  <%- end end -%>
   <%- if @ignore_where -%>
-  ignore where <%= @ignore_where %>
-  <%- end -%>
+  <%- Array(@ignore_where).each do |line| -%>
+  ignore where <%= line %>
+  <%- end end -%>
 }
