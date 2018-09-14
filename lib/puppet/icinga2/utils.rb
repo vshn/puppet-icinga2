@@ -17,7 +17,9 @@ module Puppet
             return value
           end
           if value.class == String
-            if value.match(/^\d+$/)
+             if value.match(/^{{/)
+              return value
+             elsif value.match(/^\d+$/)
               return value.to_i
             elsif value.match(/^\d+\.\d+$/)
               return value.to_f
